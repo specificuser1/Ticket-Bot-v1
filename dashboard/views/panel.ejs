@@ -1,0 +1,24 @@
+<h1>Ticket Dashboard</h1>
+
+<table border="1">
+  <tr>
+    <th>User</th>
+    <th>Channel</th>
+    <th>Created</th>
+    <th>Action</th>
+  </tr>
+
+  <% tickets.forEach(t => { %>
+    <tr>
+      <td><%= t.user %></td>
+      <td><%= t.channel %></td>
+      <td><%= t.createdAt.toDateString() %></td>
+      <td>
+        <form action="/delete-ticket" method="POST">
+          <input type="hidden" name="id" value="<%= t._id %>"/>
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+</table>
